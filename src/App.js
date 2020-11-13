@@ -1,22 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
 
+import {version} from "./../package.json"
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+        Versión del programa : {version}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>
+          Para la gran universidad de valparaiso!
+        </p>
+        
+        
       </header>
     </div>
   );
