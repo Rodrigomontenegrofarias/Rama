@@ -32,7 +32,7 @@ steps:
   - task: Npm@1    
     inputs:
       command: "custom"
-      customCommand: "version --no-git-tag-version version $(GitVersion.MajorMinorPatch)$(GitVersion.PreReleaseTagWithDash)"
+      customCommand: "version --no-git-tag-version '$(GitVersion.MajorMinorPatch)$(GitVersion.PreReleaseTagWithDash)'"
     displayName: "actualizando package.json"
 
   - task: PublishBuildArtifacts@1
