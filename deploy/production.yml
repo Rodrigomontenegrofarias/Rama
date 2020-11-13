@@ -26,4 +26,8 @@ steps:
       customCommand: "--no-git-tag-version version $(GitVersion.MajorMinorPatch)"
     displayName: "actualizando package.json"
 
-    
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'drop'
+      publishLocation: 'Container'
