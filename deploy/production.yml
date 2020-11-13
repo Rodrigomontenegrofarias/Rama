@@ -29,11 +29,10 @@ steps:
       
     displayName: "Install Node.js"
     
-  - task: Npm@1    
+
+  - task: CmdLine@2
     inputs:
-      command: "custom"
-      customCommand: "version --no-git-tag-version '$(GitVersion.MajorMinorPatch)$(GitVersion.PreReleaseTagWithDash)'"
-    displayName: "actualizando package.json"
+      script: 'npm version --no-git-tag-version "$(GitVersion.MajorMinorPatch)"'
 
   - task: PublishBuildArtifacts@1
     inputs:
