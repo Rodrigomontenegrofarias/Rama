@@ -9,11 +9,7 @@ pool:
 
 steps:
 
-  - task: NodeTool@0    
-    inputs:
-      versionSpec: "12.x"
-      
-    displayName: "Install Node.js"
+ 
     
   - task: gitversion/setup@0
     inputs:
@@ -27,8 +23,13 @@ steps:
       configFilePath: "deploy/gitConfig.yml" 
     displayName: "generando la nueva versión"
 
-  - task: Npm@1
+  - task: NodeTool@0    
+    inputs:
+      versionSpec: "10.x"
+      
+    displayName: "Install Node.js"
     
+  - task: Npm@1      
     inputs:
       command: "custom"
       customCommand: "--no-git-tag-version version $(MajorMinorPatch)$(PreReleaseTagWithDash)"
