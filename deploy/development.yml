@@ -1,0 +1,38 @@
+
+# rama desarrollo, se gatillará en las siguientes ramas
+trigger:
+    branches:
+      include:
+        - develop
+        - release/*
+
+# máquina que ejecutará la integración continua  
+pool:
+  vmImage: "ubuntu-latest"
+# git version es un componente instalable para azure devops, debe instalarse para que funcione
+
+steps:
+
+  # configuracion de git version (encargada de generar la versión de acuerdo a la rama)
+  - task: gitversion/setup@0
+    inputs:
+      versionSpec: '5.1'
+      includePrerelease: true
+    displayName : "Configurando gitversion"
+
+  # ejecuta la generación de la nueva versión
+  # usa un archivo de configuración para la gestión de versiones.
+  - task: gitversion/execute@0
+    inputs:
+      useConfigFile: false
+    displayName: "generando la nueva versión"
+
+  # configuración para la versión de json
+  - task: Npm@1
+    
+    inputs:
+      command: "custom"
+      customCommand: "--no-git-tag-version version $(GitVersion.MajorMinorPatch)$(GitVersion.PreReleaseTagWithDash)"
+    displayName: "actualizando package.json"
+
+    
