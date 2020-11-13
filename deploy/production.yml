@@ -30,10 +30,10 @@ steps:
     displayName: "Install Node.js"
     
   - task: Npm@1      
-      inputs:
-        command: "custom"
-        customCommand: "--no-git-tag-version version $(GitVersion.MajorMinorPatch)$(GitVersion.PreReleaseTagWithDash)"
-      displayName: "actualizando package.json"
+    inputs:
+      command: "custom"
+      customCommand: "--no-git-tag-version version $(GitVersion.MajorMinorPatch)$(GitVersion.PreReleaseTagWithDash)"
+    displayName: "actualizando package.json"
 
   - task: PublishBuildArtifacts@1
     inputs:
