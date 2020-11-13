@@ -48,11 +48,7 @@ steps:
       customCommand: 'run build'
     displayName: "build"
 
-  - task: PublishBuildArtifacts@1
-    inputs:    
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'drop'
-      publishLocation: 'Container'
+ 
   
   - task: CopyFiles@2
     inputs:
@@ -64,6 +60,6 @@ steps:
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: "$(Build.ArtifactStagingDirectory)"
-      artifactName: npm
+      artifactName: drop
       publishLocation: 'container'
     displayName: "Publish npm artifact"
