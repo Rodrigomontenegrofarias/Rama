@@ -35,8 +35,35 @@ steps:
       customCommand: "--no-git-tag-version version $(MajorMinorPatch)$(PreReleaseTagWithDash)"
     displayName: "actualizando package.json"
 
-  - task: PublishBuildArtifacts@1
+ 
+      
+  - task: CmdLine@2
     inputs:
+      script: 'npm install'
+    displayName: "npm install"
+
+  - task: Npm@1
+    inputs:
+      command: 'custom'
+      customCommand: 'run build'
+    displayName: "build"
+
+  - task: PublishBuildArtifacts@1
+    inputs:    
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'drop'
       publishLocation: 'Container'
+  
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: "build"
+      contents: "**"
+      targetFolder: $(Build.ArtifactStagingDirectory)
+    displayName: "Copy Build"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: "$(Build.ArtifactStagingDirectory)"
+      artifactName: npm
+      publishLocation: 'container'
+    displayName: "Publish npm artifact"
