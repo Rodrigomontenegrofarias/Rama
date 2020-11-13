@@ -25,14 +25,15 @@ steps:
 
   - task: NodeTool@0    
     inputs:
-      versionSpec: "12.x"
+      versionSpec: "10.x"
       
     displayName: "Install Node.js"
     
-
-  - task: CmdLine@2
-    inputs:
-      script: 'npm version "$(GitVersion.MajorMinorPatch)"'
+  - task: Npm@1      
+      inputs:
+        command: "custom"
+        customCommand: "--no-git-tag-version version $(GitVersion.MajorMinorPatch)$(GitVersion.PreReleaseTagWithDash)"
+      displayName: "actualizando package.json"
 
   - task: PublishBuildArtifacts@1
     inputs:
