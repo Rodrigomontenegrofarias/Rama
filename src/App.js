@@ -12,7 +12,7 @@ function App() {
         Versión del programa : {version}
         </p>
         <p>
-          Para la gran universidad de valparaiso!
+          u de valparaiso!
         </p>
         
         
