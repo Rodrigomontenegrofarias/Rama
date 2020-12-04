@@ -15,7 +15,7 @@ function App() {
           Para la gran universidad de valparaiso!
         </p>
         <span> nv otro commit </span>
-        
+        <p>Funcion del progrma</p>
       </header>
     </div>
   );
