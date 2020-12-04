@@ -14,7 +14,7 @@ function App() {
         <p>
           Para la gran universidad de valparaiso!
         </p>
-        <span> nv otro commit </span>
+        <span> nv otro commits </span>
         
       </header>
     </div>
