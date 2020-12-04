@@ -14,9 +14,11 @@ function App() {
         <p>
           Para la gran universidad de valparaiso!
         </p>
+        
+        
       </header>
     </div>
-    );
-        
-        
+  );
 }
+
+export default App;
